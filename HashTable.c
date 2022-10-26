@@ -54,16 +54,12 @@ void print_table() {
 bool hash_table_insert(person *p) {
     if(p == NULL) return false;
     int index = hash(p->name);
-
-    for (int i = 0; i < TABLE_SIZE; i++)
-    {
+    for (int i = 0; i < TABLE_SIZE; i++) {
         int try = (i + index) % TABLE_SIZE;
-        if (hash_table[try] == NULL)
-        {
+        if (hash_table[try] == NULL) {
             hash_table[try] = p;
             return true;
-        }
-        
+        }        
     }
     return false;
 }
@@ -72,11 +68,9 @@ bool hash_table_insert(person *p) {
 person *hash_table_lookup(char *name) {
     int index = hash(name);
     if (hash_table[index] != NULL && 
-        strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0)
-    {
+        strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0) {
         return hash_table[index];
-    } else
-    {
+    } else {
         return NULL;
     }    
 }
@@ -153,7 +147,7 @@ int main() {
     
     //del = hash_table_delete("Mariano");
 
-    person *tmp = hash_table_lookup("Lunin");
+    person *tmp = hash_table_lookup("Benzema");
 
     if (tmp == NULL)
     {
